@@ -10,21 +10,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlRootElement
 @Entity
 public class GameTable {
+	@XmlAttribute
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@XmlElement
 	@ManyToOne
 	@JoinColumn(name="userId")
 	private Users user;
 	
+	@XmlElement
 	@Enumerated(EnumType.STRING)
 	private ActionType actionType;
 	
+	@XmlElement
 	private int actionSum;
+	
+	@XmlElement
 	private Date actionDate;
 	
 	public GameTable() {}
