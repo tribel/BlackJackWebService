@@ -36,11 +36,15 @@ public class BlackJackController {
 	@ResponseBody
 	public ResponseEntity<Users> getUserById(@PathVariable("id") int id) {
 		Users retUser = usersService.getById(id);
-		System.out.println(retUser + "hi sluty");
 		return new ResponseEntity<Users>(retUser, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<String> addNewUser(Users user) {
+	
+	@RequestMapping(value = "users/add/{name}/{balance}")
+	@ResponseBody
+	public ResponseEntity<String> addNewUser(@PathVariable("name")String name, @PathVariable("balance")int balance) {
+		Users tmpUser = new Users(name, balance);
+		usersService.addUser(tmpUser);
 		return null;
 	}
 	
