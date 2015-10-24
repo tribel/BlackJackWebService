@@ -35,14 +35,14 @@ public class GameTable {
 	private ActionType actionType;
 	
 	@XmlElement
-	private int actionSum;
+	private double actionSum;
 	
 	@XmlElement
 	private Date actionDate;
 	
 	public GameTable() {}
 	
-	public GameTable(Users user, ActionType type, int sum, Date date) {
+	public GameTable(Users user, ActionType type, double sum, Date date) {
 		this.user = user;
 		this.actionType = type;
 		this.actionSum = sum;
@@ -73,11 +73,11 @@ public class GameTable {
 		this.actionType = actionType;
 	}
 
-	public int getActionSum() {
+	public double getActionSum() {
 		return actionSum;
 	}
 
-	public void setActionSum(int actionSum) {
+	public void setActionSum(double actionSum) {
 		this.actionSum = actionSum;
 	}
 

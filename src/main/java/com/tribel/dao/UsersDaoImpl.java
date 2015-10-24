@@ -22,12 +22,14 @@ public class UsersDaoImpl implements UsersDao {
 	}
 
 	@Override
-	public void addUser(Users user) {
+	public Users addUser(Users user) {
 		em.persist(user);
+		em.flush();
+		return user;
 	}
 
 	@Override
-	public void editBalance(Users user, int balance) {
+	public void editBalance(Users user, double balance) {
 		user.setBalance(user.getBalance() + balance);
 		em.merge(user);
 	}
@@ -39,7 +41,7 @@ public class UsersDaoImpl implements UsersDao {
 	}
 
 	@Override
-	public int getBalance(int id) {
+	public double getBalance(int id) {
 		Users users = em.find(Users.class, id);
 		return users.getBalance();
 	}

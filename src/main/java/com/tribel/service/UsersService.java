@@ -10,11 +10,11 @@ public interface UsersService {
 
 	public Users getById(int id);
 
-	public void addUser(Users user);
+	public Users addUser(Users user);
 
-	public void editBalance(Users user, int balance, ActionType action);
+	public void editBalance(Users user, double balance, ActionType action);
 
-	public int getBalance(int id);
+	public double getBalance(int id);
 
 	public void gameCountIncrement(Users user);
 

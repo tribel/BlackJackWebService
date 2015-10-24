@@ -29,20 +29,20 @@ public class UsersServiceIml implements UsersService{
 
 	@Override
 	@Transactional
-	public void addUser(Users user) {
-		userDao.addUser(user);
+	public Users addUser(Users user) {
+		return userDao.addUser(user);
 	}
 
 	@Override
 	@Transactional
-	public void editBalance(Users user, int balance , ActionType action) {
+	public void editBalance(Users user, double balance , ActionType action) {
 		userDao.editBalance(user, balance);
 		java.util.Date currentDate = new Date();
 		gameTable.addRecord(new GameTable(user, action, balance, new java.sql.Date(currentDate.getTime())));
 	}
 
 	@Override
-	public int getBalance(int id) {
+	public double getBalance(int id) {
 		return userDao.getBalance(id);
 	}
 

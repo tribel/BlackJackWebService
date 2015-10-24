@@ -28,7 +28,7 @@ public class Users {
 	private String name;
 	
 	@XmlElement
-	private int balance;
+	private double balance;
 	
 	@XmlElement
 	private int gameNumber;
@@ -43,7 +43,7 @@ public class Users {
 		this.name = name;
 	}
 	
-	public Users(String name, int balance) {
+	public Users(String name, double balance) {
 		this.name = name;
 		this.balance = balance;
 	}
@@ -64,11 +64,11 @@ public class Users {
 		this.name = name;
 	}
 
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 

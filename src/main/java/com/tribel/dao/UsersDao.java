@@ -8,11 +8,11 @@ public interface UsersDao {
 
 	public Users getById(int id);
 
-	public void addUser(Users user);
+	public Users addUser(Users user);
 
-	public void editBalance(Users user, int balance);
+	public void editBalance(Users user, double balance);
 	
-	public int getBalance(int id);
+	public double getBalance(int  id);
 	
 	public void gameCountIncrement(Users user);
 	
