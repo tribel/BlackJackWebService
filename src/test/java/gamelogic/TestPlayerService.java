@@ -2,12 +2,15 @@ package gamelogic;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,6 +22,7 @@ import com.tribel.gamelogic.PlayerService;
 @ContextConfiguration("/beans.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @DirtiesContext
+@FixMethodOrder(MethodSorters.JVM)
 public class TestPlayerService {
 
 	@Inject
@@ -32,12 +36,12 @@ public class TestPlayerService {
 	}
 
 
-	@Test
+	@Test  
 	public void testDeal() {
 		playerService.deal();
 		assertEquals(playerService.getPlayerCards().size(), 2);
 		assertEquals(playerService.getDealerCards().size(), 2);
-		List<Card> testList = playerService.getPlayerCards();
+		List<Card> testList = new ArrayList<Card>(playerService.getPlayerCards());
 		testList.addAll(playerService.getDealerCards());
 		assertArrayEquals(playerService.getCardsOnHands().toArray(), testList.toArray());
 	}
@@ -48,7 +52,7 @@ public class TestPlayerService {
 		assertEquals(3, playerService.getPlayerCards().size());
 		
 	}
-
+	
 
 	@Test
 	public void testClearDeck() {

@@ -1,12 +1,14 @@
 package com.tribel.gamelogic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.tribel.entity.Card;
+import com.tribel.entity.Rank;
 
 
 @Named
@@ -15,8 +17,8 @@ public class PlayerServiceImpl implements PlayerService<Card>{
 	@Inject
 	private Deck<Card> deck;
 	
-	private List<Card> playerCards = new ArrayList<>();
-	private List<Card> dealerCards = new ArrayList<>();
+	private List<Card> playerCards;
+	private List<Card> dealerCards;
 	private List<Card> onHendsCards; 
 	
 	private Integer playerCardSum;
@@ -25,6 +27,8 @@ public class PlayerServiceImpl implements PlayerService<Card>{
 	public static final int BLACK_JACK = 21;
 	
 	public PlayerServiceImpl() {
+		playerCards = new ArrayList<>();
+		dealerCards = new ArrayList<>();
 	}
 	
 	@Override
@@ -85,6 +89,9 @@ public class PlayerServiceImpl implements PlayerService<Card>{
 	protected int checkWinner() {
 		playerCardSum = playerCards.stream().mapToInt((x) -> x.getRank().getValue()).sum();
 		dealerCardSum = dealerCards.stream().mapToInt((x) -> x.getRank().getValue()).sum();
+		playerCardSum = aceRankCounting(playerCards, playerCardSum);
+		dealerCardSum = aceRankCounting(dealerCards, dealerCardSum);
+		
 		return playerCardSum.compareTo(dealerCardSum);
 	}
 	
@@ -105,6 +112,18 @@ public class PlayerServiceImpl implements PlayerService<Card>{
 		onHendsCards.clear();
 		playerCards.clear();
 		dealerCards.clear();
+	}
+	
+	private int aceRankCounting(List<Card> cards, int sum) {
+		if (sum > 21 && cards.contains(new Card(null, Rank.ACE))) {
+			int aceCount = Collections.frequency(cards, new Card(null, Rank.ACE));
+			
+			while (sum > 21 && aceCount != 0) {
+				sum -= 9;
+				aceCount--;
+			}
+		}	
+		return sum;
 	}
 
 

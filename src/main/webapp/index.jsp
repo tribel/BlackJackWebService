@@ -12,6 +12,6 @@
 	</head> 
 	<body>
 		<c:url value="/showMessage.html" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a>
+		<a href="${messageUrl}">Hello you are playing in BlackJack</a>
 	</body>
 </html>
