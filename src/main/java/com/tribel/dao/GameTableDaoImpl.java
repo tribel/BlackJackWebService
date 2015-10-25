@@ -17,8 +17,10 @@ public class GameTableDaoImpl implements GameTableDao{
 	private EntityManager em;
 	
 	@Override
-	public void addRecord(GameTable record) {
+	public GameTable addRecord(GameTable record) {
 		em.persist(record);
+		em.flush();
+		return record;
 	}
 
 	@Override

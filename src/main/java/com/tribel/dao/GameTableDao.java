@@ -6,7 +6,7 @@ import com.tribel.entity.GameTable;
 
 public interface GameTableDao {
 	
-	public void addRecord(GameTable record);
+	public GameTable addRecord(GameTable record);
 	
 	public GameTable getById(int id);
 	

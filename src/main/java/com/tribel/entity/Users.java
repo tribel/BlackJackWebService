@@ -93,6 +93,36 @@ public class Users {
 		return "Users [id=" + id + ", name=" + name + ", balance=" + balance
 				+ ", gameNumber=" + gameNumber + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Users other = (Users) obj;
+		if (Double.doubleToLongBits(balance) != Double
+				.doubleToLongBits(other.balance))
+			return false;
+		if (gameNumber != other.gameNumber)
+			return false;
+		if (gameTables == null) {
+			if (other.gameTables != null)
+				return false;
+		} else if (!gameTables.equals(other.gameTables))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+	
 	
 	
 	
