@@ -1,7 +1,7 @@
 # BlackJackWebService
 Restful Web service that performs Black Jack game logic. 
                             
-                             Quick Black Black Guide 
+                             Quick Black Jack Guide 
 * To get user by id - BlackJackWebService/users/{id}
 
 * First of all you should to create account - BlackJackWebService/users/add/{name}/{balance}
