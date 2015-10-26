@@ -6,22 +6,35 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.tribel.entity.Card;
 import com.tribel.entity.Rank;
 
-
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Named
 public class PlayerServiceImpl implements PlayerService<Card>{
 
 	@Inject
 	private Deck<Card> deck;
 	
+	@XmlElementWrapper
+	@XmlElement
 	private List<Card> playerCards;
+	@XmlElementWrapper
+	@XmlElement
 	private List<Card> dealerCards;
+	@XmlElementWrapper
+	@XmlElement
 	private List<Card> onHendsCards; 
-	
+	@XmlElement
 	private Integer playerCardSum;
+	@XmlElement
 	private Integer dealerCardSum;
 	
 	public static final int BLACK_JACK = 21;

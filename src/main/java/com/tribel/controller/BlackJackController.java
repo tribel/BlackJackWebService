@@ -95,6 +95,7 @@ public class BlackJackController {
 		
 		return new ResponseEntity<List<Card>>(playerService.getCardsOnHands(),
 				HttpStatus.OK);
+		
 	}
 	
 	

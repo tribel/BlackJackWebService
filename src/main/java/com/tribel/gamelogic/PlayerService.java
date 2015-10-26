@@ -1,8 +1,8 @@
 package com.tribel.gamelogic;
 
 import java.util.List;
-
 import com.tribel.entity.Card;
+
 
 public interface PlayerService<T extends Card> {
 
@@ -15,7 +15,7 @@ public interface PlayerService<T extends Card> {
 	public static final int CONTINUE = 0;
 	
 	public List<T> getPlayerCards();
-
+	
 	public List<T> getDealerCards();
 	
 	public List<T> getCardsOnHands();
