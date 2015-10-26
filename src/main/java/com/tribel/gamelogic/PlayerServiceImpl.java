@@ -31,7 +31,7 @@ public class PlayerServiceImpl implements PlayerService<Card>{
 	private List<Card> dealerCards;
 	@XmlElementWrapper
 	@XmlElement
-	private List<Card> onHendsCards; 
+	private List<Card> onHandsCards; 
 	@XmlElement
 	private Integer playerCardSum;
 	@XmlElement
@@ -56,7 +56,7 @@ public class PlayerServiceImpl implements PlayerService<Card>{
 	
 	@Override
 	public List<Card> getCardsOnHands() {
-		return onHendsCards;
+		return onHandsCards;
 	}
 	
 	@Override
@@ -67,9 +67,9 @@ public class PlayerServiceImpl implements PlayerService<Card>{
 			playerCards.add(deck.getDeckCards().pollFirst());
 			dealerCards.add(deck.getDeckCards().pollFirst());
 		}	
-		onHendsCards = new ArrayList<>();
-		onHendsCards.addAll(playerCards);
-		onHendsCards.addAll(dealerCards);
+		onHandsCards = new ArrayList<>();
+		onHandsCards.addAll(playerCards);
+		onHandsCards.addAll(dealerCards);
 		
 		if(checkWinner() != 0 && playerCardSum == BLACK_JACK) return WIN;
 		else if (checkWinner() == 0 && playerCardSum == BLACK_JACK) return PUSH;
@@ -122,7 +122,7 @@ public class PlayerServiceImpl implements PlayerService<Card>{
 	@Override
 	public void clearDeck() {
 		deck.clearDeck();
-		onHendsCards.clear();
+		onHandsCards.clear();
 		playerCards.clear();
 		dealerCards.clear();
 	}
